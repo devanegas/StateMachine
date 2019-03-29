@@ -1,5 +1,3 @@
-import java.util.Vector;
-
 public class Calculator {
     State ZeroState;
     State FirstInput;

@@ -15,7 +15,9 @@ public class FirstInput implements State{
 
         if(curr.equals('=')){
             getResult();
-        }else if (curr.equals('n')) {
+        }else if (curr.equals('d')) {
+            delete();
+        } else if (curr.equals('n')) {
             Double negated = calculator.negate(Double.parseDouble(calculator.firstList));
             calculator.firstList = negated.toString();
 
@@ -25,7 +27,7 @@ public class FirstInput implements State{
             calculator.setState(calculator.getSecondInput());
 
         }
-        else if(curr.equals('1') || curr.equals('2') || curr.equals('3') || curr.equals('4') || curr.equals('5') || curr.equals('6') || curr.equals('7') || curr.equals('8') || curr.equals('9') || curr.equals('0')){
+        else if(curr.equals('1') || curr.equals('2') || curr.equals('3') || curr.equals('4') || curr.equals('5') || curr.equals('6') || curr.equals('7') || curr.equals('8') || curr.equals('9') || curr.equals('0') || curr.equals('.')){
             calculator.firstList += curr;
             calculator.setState(calculator.getFirstInput());
         }
@@ -41,6 +43,7 @@ public class FirstInput implements State{
     public void delete() {
         calculator.firstList = "";
         calculator.secondList = "";
+        calculator.result = 0.0;
         calculator.setState(calculator.getZeroState());
     }
 }

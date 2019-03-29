@@ -16,7 +16,7 @@ public class ZeroState implements State {
         if(curr.equals('=')){
             getResult();
         }
-        else if(curr.equals('1') || curr.equals('2') || curr.equals('3') || curr.equals('4') || curr.equals('5') || curr.equals('6') || curr.equals('7') || curr.equals('8') || curr.equals('9')) {
+        else if(curr.equals('1') || curr.equals('2') || curr.equals('3') || curr.equals('4') || curr.equals('5') || curr.equals('6') || curr.equals('7') || curr.equals('8') || curr.equals('9') || curr.equals('.')) {
             calculator.firstList += curr;
             calculator.setState(calculator.getFirstInput());
         }
@@ -28,6 +28,7 @@ public class ZeroState implements State {
     @Override
     public void getResult() {
         System.out.println("0");
+        calculator.result = 0.0;
     }
 
     @Override

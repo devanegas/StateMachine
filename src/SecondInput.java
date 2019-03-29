@@ -15,7 +15,9 @@ public class SecondInput implements State {
 
         if(curr.equals('=') && calculator.secondList.length()>0){
             getResult();
-        } else if (curr.equals('1') || curr.equals('2') || curr.equals('3') || curr.equals('4') || curr.equals('5') || curr.equals('6') || curr.equals('7') || curr.equals('8') || curr.equals('9') || curr.equals('0')) {
+        }else if (curr.equals('d')) {
+            delete();
+        } else if (curr.equals('1') || curr.equals('2') || curr.equals('3') || curr.equals('4') || curr.equals('5') || curr.equals('6') || curr.equals('7') || curr.equals('8') || curr.equals('9') || curr.equals('0') || curr.equals('.'))  {
             calculator.secondList += curr;
             calculator.setState(calculator.getSecondInput());
         } else if (curr.equals('n')) {
@@ -65,6 +67,9 @@ public class SecondInput implements State {
 
     @Override
     public void delete() {
-
+        calculator.firstList = "";
+        calculator.result = 0.0;
+        calculator.secondList = "";
+        calculator.setState(calculator.getZeroState());
     }
 }
