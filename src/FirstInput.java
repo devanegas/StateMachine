@@ -15,6 +15,10 @@ public class FirstInput implements State{
 
         if(curr.equals('=')){
             getResult();
+        }else if (curr.equals('n')) {
+            Double negated = calculator.negate(Double.parseDouble(calculator.firstList));
+            calculator.firstList = negated.toString();
+
         }
         else if(curr.equals('+') || curr.equals('-') || curr.equals('*') || curr.equals('/') || curr.equals('x')) {
             calculator.operation = curr;

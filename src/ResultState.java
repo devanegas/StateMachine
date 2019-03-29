@@ -21,8 +21,8 @@ public class ResultState implements State {
             calculator.firstList += curr;
             calculator.setState(calculator.getFirstInput());
         } else if (curr.equals('n')) {
-            Double negated = calculator.negate(Double.parseDouble(calculator.secondList));
-            calculator.secondList = negated.toString();
+            Double negated = calculator.negate(calculator.result);
+            calculator.result = negated;
 
         } else if (curr.equals('+') && calculator.secondList.length()> 0 || curr.equals('-') && calculator.secondList.length()> 0 || curr.equals('*') && calculator.secondList.length()> 0 || curr.equals('/') && calculator.secondList.length()> 0 || curr.equals('x') && calculator.secondList.length()> 0){
             calculator.setState(calculator.getSecondInput());
