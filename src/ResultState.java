@@ -10,32 +10,25 @@ public class ResultState implements State {
     public void getChar() {
         Character curr;
         Scanner cin = new Scanner(System.in);
-        System.out.printf("Calculate: ");
+        System.out.printf(">: ");
         curr = cin.next().charAt(0);
 
         if(curr.equals('=')){
             getResult();
-        } else if (curr.equals('1') || curr.equals('2') || curr.equals('3') || curr.equals('4') || curr.equals('5') || curr.equals('6') || curr.equals('7') || curr.equals('8') || curr.equals('9') || curr.equals('0')) {
-            calculator.secondList += curr;
-            calculator.setState(calculator.getSecondInput());
+        } else if (curr.equals('1') || curr.equals('2') || curr.equals('3') || curr.equals('4') || curr.equals('5') || curr.equals('6') || curr.equals('7') || curr.equals('8') || curr.equals('9')) {
+            calculator.firstList = "";
+            calculator.secondList = "";
+            calculator.firstList += curr;
+            calculator.setState(calculator.getFirstInput());
         } else if (curr.equals('n')) {
             Double negated = calculator.negate(Double.parseDouble(calculator.secondList));
             calculator.secondList = negated.toString();
 
-        } else if (curr.equals('+') && calculator.secondList.length()> 0 || curr.equals('-') && calculator.secondList.length()> 0 || curr.equals('*') && calculator.secondList.length()> 0 || curr.equals('/') && calculator.secondList.length()> 0 || curr.equals('x') && calculator.secondList.length()> 0) {
-            if (calculator.operation == '+') {
-                calculator.result = calculator.add(Double.parseDouble(calculator.firstList), Double.parseDouble(calculator.firstList));
-            } else if (calculator.operation == '-') {
-                calculator.result = calculator.subtract(Double.parseDouble(calculator.firstList), Double.parseDouble(calculator.firstList));
-            } else if (calculator.operation == '*' || calculator.operation == 'x') {
-                calculator.result = calculator.multiply(Double.parseDouble(calculator.firstList), Double.parseDouble(calculator.firstList));
-            } else if (calculator.operation == '/') {
-                calculator.result = calculator.divide(Double.parseDouble(calculator.firstList), Double.parseDouble(calculator.firstList));
-            }
+        } else if (curr.equals('+') && calculator.secondList.length()> 0 || curr.equals('-') && calculator.secondList.length()> 0 || curr.equals('*') && calculator.secondList.length()> 0 || curr.equals('/') && calculator.secondList.length()> 0 || curr.equals('x') && calculator.secondList.length()> 0){
+            calculator.setState(calculator.getSecondInput());
             calculator.operation = curr;
             calculator.firstList = calculator.result.toString();
             calculator.secondList = "";
-            calculator.setState(calculator.getSecondInput());
 
         }
 
@@ -54,6 +47,8 @@ public class ResultState implements State {
         } else if (calculator.operation == '/') {
             calculator.result = calculator.divide(Double.parseDouble(calculator.firstList), Double.parseDouble(calculator.secondList));
         }
+
+        System.out.println("Your current result >: " + calculator.result);
     }
 
     @Override

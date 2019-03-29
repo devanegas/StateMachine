@@ -10,7 +10,7 @@ public class ZeroState implements State {
     public void getChar(){
         Character curr;
         Scanner cin = new Scanner(System.in);
-        System.out.printf("Calculate: ");
+        System.out.printf(">: ");
         curr = cin.next().charAt(0);
 
         if(curr.equals('=')){

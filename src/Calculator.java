@@ -6,8 +6,8 @@ public class Calculator {
     State SecondInput;
     State ResultState;
 
-    public String firstList;
-    public String secondList;
+    public String firstList = "";
+    public String secondList = "";
     public char operation;
 
     public Double result;
